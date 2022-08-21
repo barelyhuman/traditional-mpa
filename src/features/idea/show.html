@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+    />
+
+    <style>
+      header {
+        height: 100px;
+      }
+
+      header > nav {
+        display: inline-flex;
+        align-items: center;
+        gap: 20px;
+      }
+    </style>
+
+    <title>Ideas | <%- idea.name %></title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/ideas"> Home </a>
+        <a href="/ideas/new"> + Add New </a>
+      </nav>
+    </header>
+
+    <h1><%- idea.name %></h1>
+    <%= idea.descriptionHTML %>
+
+    <p>From: <%- idea.source || "Anonymous" %></p>
+  </body>
+</html>

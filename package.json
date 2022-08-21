@@ -1,0 +1,33 @@
+{
+  "name": "opid",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@koa/router": "^12.0.0",
+    "dotenv": "^16.0.1",
+    "esbuild": "^0.15.5",
+    "esbuild-register": "^3.3.3",
+    "knex": "^2.2.0",
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
+    "koa-convert": "^2.0.0",
+    "koa-csrf": "^5.0.1",
+    "koa-generic-session": "^2.3.0",
+    "lodash": "^4.17.21",
+    "marked": "^4.0.18",
+    "pg": "^8.7.3"
+  },
+  "scripts": {
+    "dev": "nodemon -r esbuild-register src/server.js",
+    "watch": "./build.js -watch",
+    "start": "node -r esbuild-register src/server.js",
+    "migrate": "npx knex migrate:latest",
+    "rollback": "npx knex migrate:rollback"
+  },
+  "devDependencies": {
+    "@babel/register": "^7.18.9",
+    "@barelyhuman/prettier-config": "^1.1.0",
+    "nodemon": "^2.0.19"
+  }
+}
