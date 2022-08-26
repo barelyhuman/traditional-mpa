@@ -2,6 +2,10 @@ import { addPlug } from "../../lib/plug";
 import Router from "@koa/router";
 import { marked } from "marked";
 import { getTemplate } from "../../lib/get-template";
+import { IndexView } from ".";
+import {render} from "preact-render-to-string";
+import { NewView } from "./new";
+import { ShowView } from "./show";
 
 const injector = (app) => {
   const router = new Router();
@@ -13,10 +17,11 @@ const injector = (app) => {
   router
 
     .get("/ideas/new", async (ctx) => {
-      const template = getTemplate(__dirname,"new.html");
-      ctx.body = template({
-        _csrf: ctx.state._csrf,
-      });
+      ctx.body = render(
+        NewView({
+          _csrf: ctx.state._csrf,
+        })
+      );
     })
 
     .get("/ideas", async (ctx) => {
@@ -24,10 +29,7 @@ const injector = (app) => {
         db: ctx.db,
       });
 
-      const template = getTemplate(__dirname,"index.html");
-      ctx.body = template({
-        ideas: data,
-      });
+      ctx.body = render(IndexView({ ideas: data }));
     })
 
     .get("/ideas/:id", async (ctx) => {
@@ -37,11 +39,11 @@ const injector = (app) => {
         id,
       });
 
-      const template = getTemplate(__dirname,"show.html");
-
-      ctx.body = template({
-        idea: idea,
-      });
+      ctx.body = render(
+        ShowView({
+          idea: idea,
+        })
+      );
     })
 
     .post("/ideas", async (ctx) => {

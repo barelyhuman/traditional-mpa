@@ -16,12 +16,14 @@
     "koa-generic-session": "^2.3.0",
     "lodash": "^4.17.21",
     "marked": "^4.0.18",
-    "pg": "^8.7.3"
+    "pg": "^8.7.3",
+    "preact": "^10.10.6",
+    "preact-render-to-string": "^5.2.2"
   },
   "scripts": {
-    "dev": "nodemon -r esbuild-register src/server.js",
+    "dev": "nodemon src/boot.js",
     "watch": "./build.js -watch",
-    "start": "node -r esbuild-register src/server.js",
+    "start": "node src/boot.js",
     "migrate": "npx knex migrate:latest",
     "rollback": "npx knex migrate:rollback"
   },
