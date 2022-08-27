@@ -1,7 +1,6 @@
 import { addPlug } from "../../lib/plug";
 import Router from "@koa/router";
 import { marked } from "marked";
-import { getTemplate } from "../../lib/get-template";
 import { IndexView } from ".";
 import {render} from "preact-render-to-string";
 import { NewView } from "./new";
